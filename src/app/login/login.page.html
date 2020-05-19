@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/welcome-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="logo-container">
+    <img style="width:100%" src="assets/img/appicon.png"/>
+  </div>
+  <div class="login-title-container">
+    <h3 class="login-header">Login</h3>
+    <p class="login-subheader">Enter your RSA pin and password to login to your account</p>
+  </div>
+  <div class="form-container">
+    <div class="divider"></div>
+    <form>
+      <ion-item>
+        <ion-label position="floating">PIN</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <div class="button-container" style="margin-top:20px;">
+        <!-- <ion-button block  class="login">SIGN IN</ion-button> -->
+        <ion-button color="primary" shape="round" routerLink="/login">SIGN IN</ion-button>
+      </div>
+      <div class="or">
+        <span>OR</span>
+      </div>
+      <div class="button-container">
+        <!-- <ion-button block color="old_primary">CONTINUE AS GUEST</ion-button> -->
+        <ion-button color="light" shape="round" routerLink="/news">CONTINUE AS GUEST</ion-button>
+      </div>
+    </form>
+
+  </div>
+</ion-content>

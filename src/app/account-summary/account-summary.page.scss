@@ -1,0 +1,44 @@
+.style_header{
+    background-color:#09347a;
+    margin-top: -10px;
+}
+.header_extend{
+    color:white;
+    padding-bottom: 22px;
+    padding-top: 20px;
+}
+
+.rsa_balance{
+    text-align: center;
+    font-size: 12px;
+}
+.rsa_cash{
+    text-align: center;font-size: 21px;margin-bottom: 15px;
+}
+.unit_price_container{
+    margin-top: 8px;padding-bottom:8px
+}
+.price_float{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.toolbar{
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+.contribution-summary {
+    ion-card-title{
+        padding: 4px;
+        margin: 0;
+    }
+    ion-card-content{
+        font-size: 20px;
+        font-weight: bold;
+        padding:3px;
+        margin: 0;
+        color: #09347a;
+    }
+}

@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  <ion-title>Profile</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+ 
+    <ion-card (click)="expandItem(items[0])">
+      <ion-card-header color="tertiary">
+        <ion-card-title>
+          <!-- <img src="assets/img/bullet.png" style="width: 30px;position: relative;top:8px"> -->
+          Bio Data
+        </ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[0].expanded">
+          <div class="expandible-container">
+            <div class="info-container">
+              <label class="title">RSA PIN:</label>
+              <label class="result">PEN110007768292</label>
+            </div>
+            <div class="info-container">
+              <label class="title">Title:</label>
+              <label class="result">Mr</label>
+            </div>
+            <div class="info-container">
+              <label class="title">First Name:</label>
+              <label class="result">Rilwan</label>
+            </div>
+            <div class="info-container">
+              <label class="title">Gender:</label>
+              <label class="result">Male</label>
+            </div>
+            <div class="info-container">
+              <label class="title">Email:</label>
+              <label class="result">reedwan47@gmail.com</label>
+            </div>
+            <div class="info-container">
+              <label class="title">Birth Date:</label>
+              <label class="result">26 Jan 1676</label>
+            </div>
+            <div class="info-container">
+              <label class="title">Phone:</label>
+              <label class="result">+2348148366295</label>
+            </div>
+            <div class="info-container">
+              <label class="title">State Of Posting:</label>
+              <label class="result">Abuja</label>
+            </div>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="expandItem(items[1])">
+      <ion-card-header color="tertiary">
+        <ion-card-title>
+          <!-- <img src="assets/img/bullet.png" style="width: 30px;position: relative;top:8px"> -->
+          Next Of Kin
+        </ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="340px" [expanded]="items[1].expanded">
+          <div class="expandible-container">
+            <div class="info-container">
+              <label class="title">Name:</label>
+              <label class="result">Busari Rilwan Kolade</label>
+            </div>
+            <div class="info-container">
+              <label class="title">Phone:</label>
+              <label class="result">0813847483</label>
+            </div>
+            <div class="info-container">
+              <label class="title">Address:</label>
+              <label class="result">14 Akolade Avenue Madalla, Niger state</label>
+            </div>
+            <div class="info-container">
+              <label class="title">State:</label>
+              <label class="result">Abuja</label>
+            </div>
+            <div class="info-container">
+              <label class="title">Relationship:</label>
+              <label class="result">Father</label>
+            </div>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="expandItem(items[2])">
+      <ion-card-header color="tertiary">
+        <ion-card-title>
+          <!-- <img src="assets/img/bullet.png" style="width: 30px;position: relative;top:8px"> -->
+          Employer
+        </ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[2].expanded">
+          <div class="expandible-container">
+            <div class="info-container">
+              <label class="title">Employer:</label>
+              <label class="result">IEI-ANCHOR PENSION MANAGERS LIMITED</label>
+            </div>
+            <div class="info-container">
+              <label class="title">Employer Address:</label>
+              <label class="result">NO 22 OTUKPO AREA 11</label>
+            </div>
+            <div class="info-container">
+              <label class="title">Employer State:</label>
+              <label class="result">Abuja</label>
+            </div>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+
+</ion-content>

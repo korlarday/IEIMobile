@@ -1,0 +1,84 @@
+<ion-app>
+  <ion-menu side="start" menuId="m1">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>
+          IEIMobile
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content class="my-container">
+      <div>
+        <div style="max-width: 50%;margin:-50px auto">
+          <img src="assets/img/appicon.png" alt="logo" width="100%">
+        </div>
+      </div>
+      <ion-list>
+        <!-- <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/account-summary">
+            <ion-icon name="wallet-sharp" slot="start"></ion-icon>
+            <ion-label>My Account</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/profile">
+            <ion-icon name="person-sharp" slot="start"></ion-icon>
+            <ion-label>Profile</ion-label>
+          </ion-item>
+        </ion-menu-toggle> -->
+
+        <ion-menu-toggle>
+          <ion-item class="transp" lines="none" routerLink="/news">
+            <ion-icon name="book" slot="start"></ion-icon>
+            <ion-label>News</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/branches">
+            <ion-icon name="business-sharp" slot="start"></ion-icon>
+            <ion-label>Branches</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/downloads">
+            <ion-icon name="cloud-download-sharp" slot="start"></ion-icon>
+            <ion-label>Downloads</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/faqs">
+            <ion-icon name="clipboard-sharp" slot="start"></ion-icon>
+            <ion-label>FAQs</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/register">
+            <ion-icon name="document-text-sharp" slot="start"></ion-icon>
+            <ion-label>Register With Us</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <!-- <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/feedback">
+            <ion-icon name="chatbubble-ellipses-sharp" slot="start"></ion-icon>
+            <ion-label>Feedback</ion-label>
+          </ion-item>
+        </ion-menu-toggle> -->
+
+        <!-- <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/login" button>
+            <ion-icon name="exit" slot="start"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle> -->
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>

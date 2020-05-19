@@ -1,0 +1,28 @@
+.menu-style{
+    background: url('../assets/img/sky.jpg') no-repeat center center !important;
+    ion-list{
+        background: inherit;
+    }
+
+}
+
+ion-content {
+    background-image:  url('../assets/img/sky3.jpg');
+    background-repeat: repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-size:cover;
+    height: 100%;
+    // position: absolute;
+    --ion-background-color:none;
+    ion-icon, ion-label{
+        color: black !important;
+    }
+    // background:url('../assets/img/lockdown.png');
+}
+
+.transp .item-content {
+    background-color: transparent !important;
+    color: #fff;
+}

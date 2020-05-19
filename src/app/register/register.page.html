@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  <ion-title>New Client Registration</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="login-title-container">
+    <h4 class="login-header">Register With Us</h4>
+  </div>
+  <div class="form-container">
+    <div class="divider"></div>
+    <form>
+      <ion-item>
+        <ion-label position="floating">Firstname</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Surname</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Phone</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Birthdate</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Employer</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <div class="ion-padding">
+        <ion-button color="primary" fill="outline" class="sign-up-button2">
+          <ion-icon name="camera"></ion-icon> Upload Image
+        </ion-button>
+      </div>
+
+      <div class="button-container" style="margin-top:5px;">
+        <!-- <ion-button block  class="login">SIGN IN</ion-button> -->
+        <ion-button color="primary" shape="round" routerLink="/welcome">SUBMIT</ion-button>
+      </div>
+    </form>
+
+  </div>
+</ion-content>

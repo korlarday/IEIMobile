@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end" *ngIf="showSkip">
+      <ion-button (click)="startApp()" color="primary">skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+  <ion-slides pager="true" #slides (ionSlideWillChange)="doCheck()">
+
+    <ion-slide>
+      <div class="slide">
+        <img src="assets/img/ica-slidebox-img-1.png"/>
+        <h2>Watch Your Retirement Savings Account Grow In Leaps & Bounds</h2>
+        <p>With IEI Anchor Pensions, you are guaranteed of maximum return on your investments.</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-2.png"/>
+      <h2>Easy Registration</h2>
+      <p>Start your pension plan today with IEI Anchor Pensions. The start up process is quick and easy.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-3.png"/>
+      <h2>We have you covered</h2>
+      <p>With the Multi Fund Scheme, we have provisions for all ...self-employed, the informal sector (fashion designers, mechanics, market sellers, lawyers, taxi drivers, etc.) </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-4.png"/>
+      <h2>Ready to walk with us?</h2>
+      <ion-button fill="clear" (click)="startApp()">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

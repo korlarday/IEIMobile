@@ -1,0 +1,7 @@
+{
+  "name": "IEIAnchor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

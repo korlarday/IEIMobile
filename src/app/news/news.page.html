@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  <ion-title>News</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <ion-grid *ngIf="isLoading">
+    <ion-row>
+      <ion-col>
+        <div text-center>
+          <ion-spinner color="primary"></ion-spinner>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+        <p>There are no bookable place right now, please come back later.</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+        <ion-card>
+          <ion-card-header>
+            <!-- <ion-text color="primary"> -->
+              <ion-card-title>Data Recapture</ion-card-title>
+              <ion-card-subtitle>Data Recapture update</ion-card-subtitle>
+            <!-- </ion-text> -->
+          </ion-card-header>
+          <ion-img src="assets/img/lockdown.png"></ion-img>
+          <ion-card-content>
+            <p>Now Open</p>
+          </ion-card-content>
+          <div text-center padding>
+            <ion-button
+              fill="clear"
+              color="primary"
+              routerLink="/news/news-detail"
+            >
+              More
+            </ion-button>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+        <!-- <ion-virtual-scroll approxItemHeight="72px"> -->
+          <ion-item
+            detail
+            routerLink="/news/news-detail"
+            >
+            <ion-thumbnail slot="start">
+              <ion-img src="assets/img/lockdown.png"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>Lockdown</h2>
+              <p>Now Open</p>
+            </ion-label>
+          </ion-item>
+        <!-- </ion-virtual-scroll> -->
+
+        <ion-item
+            routerLink="/news/news-detail"
+            detail>
+            <ion-thumbnail slot="start">
+              <ion-img src="assets/img/valentine.jpg"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>Valentine</h2>
+              <p>Happy Valentine</p>
+            </ion-label>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

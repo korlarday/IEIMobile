@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  <ion-title>FAQs</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-searchbar></ion-searchbar>
+
+  <ion-list>
+    <ion-card (click)="expandItem(items[0])">
+      <ion-card-header color="tertiary">
+        What is the Contributory Pension Scheme (CPS)?
+      </ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[0].expanded">
+          <div class="expandible-container">
+            <p>
+              The Contributory Pension Scheme (CPS) which commenced in 2004 is fully funded,
+              privately managed, with third party in custody of the funds and assests and is
+              based on individual accounts. It ensures that everyone who has worked receives
+              his/her retirement benefits as at when due.
+            </p>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="expandItem(items[1])">
+      <ion-card-header color="tertiary">
+        Is CPS backed by any Government Regulation?
+      </ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[1].expanded">
+          <div class="expandible-container">
+            <p>
+              The Contributory Pension Scheme (CPS) which commenced in 2004 is fully funded,
+              privately managed, with third party in custody of the funds and assests and is
+              based on individual accounts. It ensures that everyone who has worked receives
+              his/her retirement benefits as at when due.
+            </p>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="expandItem(items[2])">
+      <ion-card-header color="tertiary">
+        What regulatory body supervises this scheme?
+      </ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[2].expanded">
+          <div class="expandible-container">
+            <p>
+              The Contributory Pension Scheme (CPS) which commenced in 2004 is fully funded,
+              privately managed, with third party in custody of the funds and assests and is
+              based on individual accounts. It ensures that everyone who has worked receives
+              his/her retirement benefits as at when due.
+            </p>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="expandItem(items[3])">
+      <ion-card-header color="tertiary">
+        Is Contributory Pension Scheme (CPS) mandatory for every worker?
+      </ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[3].expanded">
+          <div class="expandible-container">
+            <p>
+              The Contributory Pension Scheme (CPS) which commenced in 2004 is fully funded,
+              privately managed, with third party in custody of the funds and assests and is
+              based on individual accounts. It ensures that everyone who has worked receives
+              his/her retirement benefits as at when due.
+            </p>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="expandItem(items[4])">
+      <ion-card-header color="tertiary">
+        How do I participate in the Scheme?
+      </ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[4].expanded">
+          <div class="expandible-container">
+            <p>
+              The Contributory Pension Scheme (CPS) which commenced in 2004 is fully funded,
+              privately managed, with third party in custody of the funds and assests and is
+              based on individual accounts. It ensures that everyone who has worked receives
+              his/her retirement benefits as at when due.
+            </p>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

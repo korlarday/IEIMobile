@@ -1,0 +1,202 @@
+<ion-header>
+  <ion-toolbar color="primary" class="toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Account Summary</ion-title>
+    
+  </ion-toolbar>
+      <div class="header_extend style_header">
+        <div class="rsa_balance">RSA Balance</div>
+        <div class="rsa_cash">
+          NGN 345,000.00
+        </div>
+        <div class="unit_price_container">
+          <div class="price_float">Unit Price: 14.00</div>
+          <div class="price_float">Growth: 34.00</div>
+        </div>
+      </div>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-segment value="all">
+    <ion-segment-button value="all">All</ion-segment-button>
+    <ion-segment-button value="favorites">Favorites</ion-segment-button>
+  </ion-segment> -->
+  <div padding>
+    <ion-segment [(ngModel)]="rsa">
+      <ion-segment-button value="compulsory">
+        Compulsory
+      </ion-segment-button>
+      <ion-segment-button value="voluntary">
+        VOLUNTARY
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+    
+    <div [ngSwitch]="rsa" padding>
+      <ion-list *ngSwitchCase="'compulsory'">
+        <ion-item style="text-align: center; font-size: 16px;color:#09347a;">
+          <b>Account Summary as at Fri May 15 2020</b>
+        </ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card class="ion-text-center contribution-summary">
+                <ion-card-title color="secondary">
+                  Current Value
+                </ion-card-title>
+                <ion-card-content color="primary">
+                  NGN 132,032,000.00
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card class="ion-text-center contribution-summary">
+                <ion-card-title color="secondary">
+                  Total Contribution
+                </ion-card-title>
+                <ion-card-content color="primary">
+                  NGN 132,032,000.00
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card class="ion-text-center contribution-summary">
+                <ion-card-title color="secondary">
+                  Net Contribution
+                </ion-card-title>
+                <ion-card-content color="primary">
+                  NGN 32,000.00
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card class="ion-text-center contribution-summary">
+                <ion-card-title color="secondary">
+                  Growth
+                </ion-card-title>
+                <ion-card-content color="primary">
+                  NGN 2115
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card class="ion-text-center contribution-summary">
+                <ion-card-title color="secondary">
+                  Unit Price
+                </ion-card-title>
+                <ion-card-content color="primary">
+                  2.6116
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-card class="ion-text-center contribution-summary">
+                <ion-card-title color="secondary">
+                  Total Units
+                </ion-card-title>
+                <ion-card-content color="primary">
+                  22618.66
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+
+
+      <ion-list *ngSwitchCase="'voluntary'">
+          <ion-item style="text-align: center; font-size: 16px;color:#09347a;">
+            <b>Account Summary as at Fri May 15 2020</b>
+          </ion-item>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-card class="ion-text-center contribution-summary">
+                  <ion-card-title color="secondary">
+                    Current Value
+                  </ion-card-title>
+                  <ion-card-content color="primary">
+                    NGN 0.00
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-card class="ion-text-center contribution-summary">
+                  <ion-card-title color="secondary">
+                    Total Contribution
+                  </ion-card-title>
+                  <ion-card-content color="primary">
+                    NGN 0.00
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-card class="ion-text-center contribution-summary">
+                  <ion-card-title color="secondary">
+                    Net Contribution
+                  </ion-card-title>
+                  <ion-card-content color="primary">
+                    NGN 0.00
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-card class="ion-text-center contribution-summary">
+                  <ion-card-title color="secondary">
+                    Growth
+                  </ion-card-title>
+                  <ion-card-content color="primary">
+                    NGN 0.00
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-card class="ion-text-center contribution-summary">
+                  <ion-card-title color="secondary">
+                    Unit Price
+                  </ion-card-title>
+                  <ion-card-content color="primary">
+                    2.6116
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-card class="ion-text-center contribution-summary">
+                  <ion-card-title color="secondary">
+                    Total Units
+                  </ion-card-title>
+                  <ion-card-content color="primary">
+                    22618.66
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+      </ion-list>
+    </div>
+</ion-content>

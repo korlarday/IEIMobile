@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  <ion-title>Feedback</ion-title>
+</ion-toolbar>
+</ion-header>
+
+
+<ion-content padding class="ion-padding">
+
+  <div class="form-wrap">
+    <form>
+
+      <ion-item>
+        <ion-label stacked>Your comment</ion-label>
+        <ion-textarea rows="7" required>
+          </ion-textarea>
+      </ion-item>
+    
+      <ion-row>
+        <ion-col text-center>
+          <div class="button-container" style="margin-top:5px;">
+            <!-- <ion-button block  class="login">SIGN IN</ion-button> -->
+            <ion-button color="primary" shape="round">SEND</ion-button>
+          </div>
+          <!-- <p *ngIf="pleaseWait" class="white-bg" padding>Sending your feedback...</p> -->
+        </ion-col>
+      </ion-row>
+    
+    </form>
+  </div>
+</ion-content>

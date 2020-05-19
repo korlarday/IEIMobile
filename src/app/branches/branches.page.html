@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  <ion-title>Branches</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <p *ngIf="!branches" class="white-bg" padding>Loading, please wait...</p> -->
+  <ion-searchbar></ion-searchbar>
+
+  <ion-list>
+    <ion-card (click)="expandItem(items[0])">
+      <ion-card-header color="tertiary">Headquarters</ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[0].expanded">
+          <div class="expandible-container">
+            <div class="text-center">
+              <div class="my-sub-header">Address</div>
+              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
+    
+              <div class="my-sub-header">Contact Person</div>
+              <div>GLORY ETADUOVIE</div>
+    
+              <div class="my-sub-header">Telephone</div>
+              <div>08134757483</div>
+            </div>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="expandItem(items[1])">
+      <ion-card-header color="tertiary">Anambra Office</ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[1].expanded">
+          <div class="expandible-container">
+            <div class="text-center">
+              <div class="my-sub-header">Address</div>
+              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
+    
+              <div class="my-sub-header">Contact Person</div>
+              <div>GLORY ETADUOVIE</div>
+    
+              <div class="my-sub-header">Telephone</div>
+              <div>08134757483</div>
+            </div>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="expandItem(items[2])">
+      <ion-card-header color="tertiary">Edo Office</ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[2].expanded">
+          <div class="expandible-container">
+            <div class="text-center">
+              <div class="my-sub-header">Address</div>
+              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
+    
+              <div class="my-sub-header">Contact Person</div>
+              <div>GLORY ETADUOVIE</div>
+    
+              <div class="my-sub-header">Telephone</div>
+              <div>08134757483</div>
+            </div>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="expandItem(items[3])">
+      <ion-card-header color="tertiary">Asaba Office</ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[3].expanded">
+          <div class="expandible-container">
+            <div class="text-center">
+              <div class="my-sub-header">Address</div>
+              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
+    
+              <div class="my-sub-header">Contact Person</div>
+              <div>GLORY ETADUOVIE</div>
+    
+              <div class="my-sub-header">Telephone</div>
+              <div>08134757483</div>
+            </div>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="expandItem(items[4])">
+      <ion-card-header color="tertiary">Ondo Office</ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[4].expanded">
+          <div class="expandible-container">
+            <div class="text-center">
+              <div class="my-sub-header">Address</div>
+              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
+    
+              <div class="my-sub-header">Contact Person</div>
+              <div>GLORY ETADUOVIE</div>
+    
+              <div class="my-sub-header">Telephone</div>
+              <div>08134757483</div>
+            </div>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="expandItem(items[5])">
+      <ion-card-header color="tertiary">Enugu Office</ion-card-header>
+  
+      <ion-card-content style="padding: 0;">
+        <app-expandable expandHeight="600px" [expanded]="items[5].expanded">
+          <div class="expandible-container">
+            <div class="text-center">
+              <div class="my-sub-header">Address</div>
+              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
+    
+              <div class="my-sub-header">Contact Person</div>
+              <div>GLORY ETADUOVIE</div>
+    
+              <div class="my-sub-header">Telephone</div>
+              <div>08134757483</div>
+            </div>
+          </div>
+        </app-expandable>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

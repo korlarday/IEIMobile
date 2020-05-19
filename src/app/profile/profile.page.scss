@@ -1,0 +1,28 @@
+ion-content{
+    // --ion-background-color: #09347a;
+}
+ion-card{
+
+    background-color: white;
+}
+.expandible-container{
+    padding: 10px;
+    .info-container{
+        border-bottom: 1px solid #ebebeb;
+        padding-left: 10px;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+    }
+    label{
+        display:block;
+    }
+    label.title{
+        color: #cd9536
+    }
+    label.result{
+        text-align: center;
+        font-weight: bold;
+        color: #09347a;
+        font-size: 16px;
+    }
+}
