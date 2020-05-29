@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../services/employee.service';
+import { AuthService } from '../Auth/auth.service';
+import { AccountSummary } from '../services/models';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-account-summary',
@@ -7,9 +11,128 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountSummaryPage implements OnInit {
   rsa = 'compulsory';
-  constructor() { }
+  pin: string;
+  accountSummary: AccountSummary;
+  isLoading = true;
+  RSABalance: number;
+  fundID: number;
+  fundType: string;
+  schemeName: string;
+  totalContribution: number;
+  netContribution: number;
+  growth: number;
+  totalUnits: number;
+  unitPrice: number;
+
+  vRSABalance: number;
+  vfundType: string;
+  vschemeName: string;
+  vtotalContribution: number;
+  vnetContribution: number;
+  vGrowth: number;
+  vTotalUnits: number;
+  vUnitPrice: number;
+
+  toDay: string;
+
+  constructor(
+    private employeeService: EmployeeService,
+    private authService: AuthService,
+    private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
+    this.isLoading = true;
+    this.authService.pin.subscribe(userPin => {
+      this.pin = userPin;
+      this.employeeService.accountSummary(this.pin).subscribe((accSummary: AccountSummary) => {
+        this.accountSummary = accSummary;
+        console.log(this.accountSummary);
+
+        this.RSABalance = this.accountSummary.balanceMandatory;
+        this.fundID = this.accountSummary.fundId;
+        this.fundType = this.getFundType(this.fundID);
+        this.schemeName = this.accountSummary.schemeName;
+        this.totalContribution = this.accountSummary.totalContributionMandatory;
+        this.netContribution = this.accountSummary.netContributionMandatory;
+        this.growth = this.accountSummary.growthMandatory;
+        this.totalUnits = this.accountSummary.totalUnitMandatory;
+        this.unitPrice = this.accountSummary.unitPrice;
+
+        // voluntary
+        this.vRSABalance = this.accountSummary.balanceVoluntary;
+        this.vschemeName = this.accountSummary.schemeName;
+        this.vtotalContribution = this.accountSummary.totalContributionVoluntary;
+        this.vnetContribution = this.accountSummary.netContributionVoluntary;
+        this.vGrowth = this.accountSummary.growthVoluntary;
+        this.vTotalUnits = this.accountSummary.totalUnitVoluntary;
+        this.vUnitPrice = this.accountSummary.price;
+
+        // get today's date
+        const today = new Date();
+        this.toDay = today.toDateString();
+        this.isLoading = false;
+      });
+      // this.loadingCtrl
+      // .create({
+      //   keyboardClose: true,
+      //   message: 'Please wait...' ,
+      //   spinner: 'lines',
+      // })
+      // .then(loadingEl => {
+      //   loadingEl.present();
+      //   this.employeeService.accountSummary(this.pin).subscribe((accSummary: AccountSummary) => {
+      //     this.accountSummary = accSummary;
+      //     loadingEl.dismiss();
+      //     console.log(this.accountSummary);
+
+      //     this.RSABalance = this.accountSummary.balanceMandatory;
+      //     this.fundID = this.accountSummary.fundId;
+      //     this.fundType = this.getFundType(this.fundID);
+      //     this.schemeName = this.accountSummary.schemeName;
+      //     this.totalContribution = this.accountSummary.totalContributionMandatory;
+      //     this.netContribution = this.accountSummary.netContributionMandatory;
+      //     this.growth = this.accountSummary.growthMandatory;
+      //     this.totalUnits = this.accountSummary.totalUnitMandatory;
+      //     this.unitPrice = this.accountSummary.unitPrice;
+
+      //     // voluntary
+      //     this.vRSABalance = this.accountSummary.balanceVoluntary;
+      //     this.vschemeName = this.accountSummary.schemeName;
+      //     this.vtotalContribution = this.accountSummary.totalContributionVoluntary;
+      //     this.vnetContribution = this.accountSummary.netContributionVoluntary;
+      //     this.vGrowth = this.accountSummary.growthVoluntary;
+      //     this.vTotalUnits = this.accountSummary.totalUnitVoluntary;
+      //     this.vUnitPrice = this.accountSummary.price;
+
+      //     // get today's date
+      //     const today = new Date();
+      //     this.toDay = today.toDateString();
+      //     this.isLoading = false;
+      //   });
+      // });
+    });
+  }
+
+  getFundType(fundID: number) {
+
+    let selectedFundID = 'RSA FUND ';
+
+    switch (fundID) {
+      case 1:
+          selectedFundID += 'II';
+          break;
+      case 73:
+      selectedFundID += 'I';
+      break;
+      case 74:
+      selectedFundID += 'III';
+      break;
+      case 12:
+      selectedFundID += 'IV';
+      break;
+    }
+
+    return selectedFundID;
   }
 
   segmentChanged(event) {

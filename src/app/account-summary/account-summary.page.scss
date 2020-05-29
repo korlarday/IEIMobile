@@ -11,6 +11,7 @@
 .rsa_balance{
     text-align: center;
     font-size: 12px;
+    margin-bottom: 7px;
 }
 .rsa_cash{
     text-align: center;font-size: 21px;margin-bottom: 15px;
@@ -30,6 +31,7 @@
 }
 
 .contribution-summary {
+    padding: 6px;
     ion-card-title{
         padding: 4px;
         margin: 0;
@@ -42,3 +44,39 @@
         color: #09347a;
     }
 }
+
+ion-label.summary-date{
+    display: block;
+    color: var(--ion-color-primary);
+    font-weight: bold;
+    text-align: center; 
+}
+
+ion-label.label-header{
+    display: block;
+    color: grey;
+    // color: #a37629;
+    font-size: 18px;
+}
+ion-card{
+    border: 1px solid var(--ion-color-primary);
+}
+
+ion-segment {
+    border: 2px solid var(--ion-color-primary);
+    margin: 0;
+  }
+ion-segment-button{
+    --indicator-box-shadow: transparent!important;
+    border-radius: 0 !important;
+    padding: 0.1rem;
+    margin: 0;
+    --background:white;
+    --color:#2d2e87;
+    --background-checked: var(--ion-color-primary)!important;
+    --color-checked: white;
+    --indicator-color : transparent!important; /* this solution */
+    }
+
+
+

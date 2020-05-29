@@ -6,131 +6,57 @@
     <ion-title>Account Summary</ion-title>
     
   </ion-toolbar>
-      <div class="header_extend style_header">
-        <div class="rsa_balance">RSA Balance</div>
+      <div class="header_extend style_header" *ngIf="!isLoading">
+        <div class="rsa_balance">RSA Balance:</div>
         <div class="rsa_cash">
-          NGN 345,000.00
+          {{ RSABalance | currency:'NGN':'symbol-narrow' }}
         </div>
         <div class="unit_price_container">
-          <div class="price_float">Unit Price: 14.00</div>
-          <div class="price_float">Growth: 34.00</div>
+          <div class="price_float">Unit Price: {{ unitPrice | number }}</div>
+          <div class="price_float">Growth: {{ growth | currency:'NGN':'symbol-narrow'}}</div>
         </div>
       </div>
+      <div class="header_extend style_header custom custom-skeleton" *ngIf="isLoading">
+        <div class="rsa_balance"><ion-skeleton-text animated></ion-skeleton-text></div>
+        <div class="rsa_cash">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
+        <div class="unit_price_container">
+          <div class="price_float"><ion-skeleton-text animated></ion-skeleton-text> <ion-skeleton-text animated></ion-skeleton-text></div>
+          <div class="price_float"><ion-skeleton-text animated></ion-skeleton-text> <ion-skeleton-text animated></ion-skeleton-text></div>
+        </div>
+      </div>
+
 </ion-header>
 
 <ion-content>
-  <!-- <ion-segment value="all">
-    <ion-segment-button value="all">All</ion-segment-button>
-    <ion-segment-button value="favorites">Favorites</ion-segment-button>
-  </ion-segment> -->
-  <div padding>
-    <ion-segment [(ngModel)]="rsa">
-      <ion-segment-button value="compulsory">
-        Compulsory
-      </ion-segment-button>
-      <ion-segment-button value="voluntary">
-        VOLUNTARY
-      </ion-segment-button>
-    </ion-segment>
-  </div>
-
-    
-    <div [ngSwitch]="rsa" padding>
-      <ion-list *ngSwitchCase="'compulsory'">
-        <ion-item style="text-align: center; font-size: 16px;color:#09347a;">
-          <b>Account Summary as at Fri May 15 2020</b>
-        </ion-item>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-card class="ion-text-center contribution-summary">
-                <ion-card-title color="secondary">
-                  Current Value
-                </ion-card-title>
-                <ion-card-content color="primary">
-                  NGN 132,032,000.00
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-card class="ion-text-center contribution-summary">
-                <ion-card-title color="secondary">
-                  Total Contribution
-                </ion-card-title>
-                <ion-card-content color="primary">
-                  NGN 132,032,000.00
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-card class="ion-text-center contribution-summary">
-                <ion-card-title color="secondary">
-                  Net Contribution
-                </ion-card-title>
-                <ion-card-content color="primary">
-                  NGN 32,000.00
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-card class="ion-text-center contribution-summary">
-                <ion-card-title color="secondary">
-                  Growth
-                </ion-card-title>
-                <ion-card-content color="primary">
-                  NGN 2115
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-card class="ion-text-center contribution-summary">
-                <ion-card-title color="secondary">
-                  Unit Price
-                </ion-card-title>
-                <ion-card-content color="primary">
-                  2.6116
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-card class="ion-text-center contribution-summary">
-                <ion-card-title color="secondary">
-                  Total Units
-                </ion-card-title>
-                <ion-card-content color="primary">
-                  22618.66
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-list>
-
-
-      <ion-list *ngSwitchCase="'voluntary'">
-          <ion-item style="text-align: center; font-size: 16px;color:#09347a;">
-            <b>Account Summary as at Fri May 15 2020</b>
-          </ion-item>
-
+  <div *ngIf="!isLoading">
+    <div class="ion-padding">
+      <ion-segment [(ngModel)]="rsa" mode="ios">
+        <ion-segment-button value="compulsory">
+          Compulsory
+        </ion-segment-button>
+        <ion-segment-button value="voluntary">
+          <ion-label>VOLUNTARY</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  
+      
+      <div [ngSwitch]="rsa" padding>
+        <ion-list *ngSwitchCase="'compulsory'">
+          <ion-label class="summary-date">
+            <b>Account Summary as at {{ toDay }}</b>
+          </ion-label>
           <ion-grid>
             <ion-row>
               <ion-col>
                 <ion-card class="ion-text-center contribution-summary">
-                  <ion-card-title color="secondary">
-                    Current Value
-                  </ion-card-title>
                   <ion-card-content color="primary">
-                    NGN 0.00
+                    <ion-label class="label-header">
+                      Current Value
+                    </ion-label>
+                    {{ RSABalance | currency:'NGN':'symbol-narrow' }}
                   </ion-card-content>
                 </ion-card>
               </ion-col>
@@ -138,11 +64,11 @@
             <ion-row>
               <ion-col>
                 <ion-card class="ion-text-center contribution-summary">
-                  <ion-card-title color="secondary">
-                    Total Contribution
-                  </ion-card-title>
                   <ion-card-content color="primary">
-                    NGN 0.00
+                    <ion-label class="label-header">
+                      Total Contribution
+                    </ion-label>
+                    {{ totalContribution | currency:'NGN':'symbol-narrow' }}
                   </ion-card-content>
                 </ion-card>
               </ion-col>
@@ -150,11 +76,11 @@
             <ion-row>
               <ion-col>
                 <ion-card class="ion-text-center contribution-summary">
-                  <ion-card-title color="secondary">
-                    Net Contribution
-                  </ion-card-title>
                   <ion-card-content color="primary">
-                    NGN 0.00
+                    <ion-label class="label-header">
+                      Net Contribution
+                    </ion-label>
+                    {{ netContribution | currency:'NGN':'symbol-narrow' }}
                   </ion-card-content>
                 </ion-card>
               </ion-col>
@@ -162,11 +88,11 @@
             <ion-row>
               <ion-col>
                 <ion-card class="ion-text-center contribution-summary">
-                  <ion-card-title color="secondary">
-                    Growth
-                  </ion-card-title>
                   <ion-card-content color="primary">
-                    NGN 0.00
+                    <ion-label class="label-header">
+                      Growth
+                    </ion-label>
+                    {{ growth | currency:'NGN':'symbol-narrow' }}
                   </ion-card-content>
                 </ion-card>
               </ion-col>
@@ -174,11 +100,11 @@
             <ion-row>
               <ion-col>
                 <ion-card class="ion-text-center contribution-summary">
-                  <ion-card-title color="secondary">
-                    Unit Price
-                  </ion-card-title>
                   <ion-card-content color="primary">
-                    2.6116
+                    <ion-label class="label-header">
+                      Unit Price
+                    </ion-label>
+                    {{ unitPrice }}
                   </ion-card-content>
                 </ion-card>
               </ion-col>
@@ -186,17 +112,262 @@
             <ion-row>
               <ion-col>
                 <ion-card class="ion-text-center contribution-summary">
-                  <ion-card-title color="secondary">
-                    Total Units
-                  </ion-card-title>
                   <ion-card-content color="primary">
-                    22618.66
+                    <ion-label class="label-header">
+                      Total Units
+                    </ion-label>
+                    {{ totalUnits | number }}
                   </ion-card-content>
                 </ion-card>
               </ion-col>
             </ion-row>
           </ion-grid>
+        </ion-list>
+  
+  
+        <ion-list *ngSwitchCase="'voluntary'">
+            <ion-label class="summary-date">
+              <b>Account Summary as at {{ toDay }}</b>
+            </ion-label>
+  
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-card class="ion-text-center contribution-summary">
+                    <ion-card-content color="primary">
+                      <ion-label class="label-header">
+                        Fund Type
+                      </ion-label>
+                      {{ vschemeName }}
+                    </ion-card-content>
+                  </ion-card>
+                  <ion-card class="ion-text-center contribution-summary">
+                    <ion-card-content color="primary">
+                      <ion-label class="label-header">
+                        Current Value
+                      </ion-label>
+                      {{ vRSABalance | currency:'NGN':'symbol-narrow' }}
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-card class="ion-text-center contribution-summary">
+                    <ion-card-content color="primary">
+                      <ion-label class="label-header">
+                        Total Contribution
+                      </ion-label>
+                      {{ vtotalContribution | currency:'NGN':'symbol-narrow' }}
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-card class="ion-text-center contribution-summary">
+                    <ion-card-content color="primary">
+                      <ion-label class="label-header">
+                        Net Contribution
+                      </ion-label>
+                      {{ vnetContribution | currency:'NGN':'symbol-narrow' }}
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-card class="ion-text-center contribution-summary">
+                    <ion-card-content color="primary">
+                      <ion-label class="label-header">
+                        Growth
+                      </ion-label>
+                      {{ vGrowth | currency:'NGN':'symbol-narrow' }}
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-card class="ion-text-center contribution-summary">
+                    <ion-card-content color="primary">
+                      <ion-label class="label-header">
+                        Unit Price
+                      </ion-label>
+                      {{ vUnitPrice }}
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-card class="ion-text-center contribution-summary">
+                    <ion-card-content color="primary">
+                      <ion-label class="label-header">
+                        Total Units
+                      </ion-label>
+                      {{ vTotalUnits | number }}
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+  
+        </ion-list>
+      </div>
+  </div>
 
-      </ion-list>
+
+  <div *ngIf="isLoading">
+    <div class="ion-padding custom-skeleton">
+      <ion-segment [(ngModel)]="rsa" mode="ios">
+        <ion-segment-button value="compulsory">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-segment-button>
+        <ion-segment-button value="voluntary">
+          <ion-label><ion-skeleton-text animated></ion-skeleton-text></ion-label>
+        </ion-segment-button>
+      </ion-segment>
     </div>
+    <ion-list>
+      <ion-label class="summary-date">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-label>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card class="ion-text-center contribution-summary">
+              <ion-card-content color="primary">
+                <ion-label class="label-header">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-label>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card class="ion-text-center contribution-summary">
+              <ion-card-content color="primary">
+                <ion-label class="label-header">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-label>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card class="ion-text-center contribution-summary">
+              <ion-card-content color="primary">
+                <ion-label class="label-header">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-label>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card class="ion-text-center contribution-summary">
+              <ion-card-content color="primary">
+                <ion-label class="label-header">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-label>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card class="ion-text-center contribution-summary">
+              <ion-card-content color="primary">
+                <ion-label class="label-header">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-label>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card class="ion-text-center contribution-summary">
+              <ion-card-content color="primary">
+                <ion-label class="label-header">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-label>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+    <div class="ion-padding custom-skeleton">
+      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    </div>
+  
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+        </ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
