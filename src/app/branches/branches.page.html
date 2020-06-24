@@ -7,130 +7,125 @@
 </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <!-- <p *ngIf="!branches" class="white-bg" padding>Loading, please wait...</p> -->
-  <ion-searchbar></ion-searchbar>
+  <div *ngIf="!isLoading">
+    <ion-searchbar (ionInput)="filterBranches($event)"></ion-searchbar>
+    <ion-list>
+      <ion-card *ngFor="let branch of branches; index as i" (click)="expandItem(items[i])">
+        <ion-card-header color="primary">{{ branch.name }}</ion-card-header>
+    
+        <ion-card-content style="padding: 0;">
+          <app-expandable expandHeight="600px" [expanded]="items[i].expanded">
+            <div class="expandible-container">
+              <div class="text-center">
+                <div class="my-sub-header">Address:</div>
+                <div>{{ branch.address }}</div>
+      
+                <div class="my-sub-header">Contact Person:</div>
+                <div>{{ branch.contact_person }}</div>
+      
+                <div class="my-sub-header">Telephone:</div>
+                <div>{{ branch.telephone }}</div>
+              </div>
+            </div>
+          </app-expandable>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
 
-  <ion-list>
-    <ion-card (click)="expandItem(items[0])">
-      <ion-card-header color="tertiary">Headquarters</ion-card-header>
-  
-      <ion-card-content style="padding: 0;">
-        <app-expandable expandHeight="600px" [expanded]="items[0].expanded">
-          <div class="expandible-container">
-            <div class="text-center">
-              <div class="my-sub-header">Address</div>
-              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
-    
-              <div class="my-sub-header">Contact Person</div>
-              <div>GLORY ETADUOVIE</div>
-    
-              <div class="my-sub-header">Telephone</div>
-              <div>08134757483</div>
-            </div>
-          </div>
-        </app-expandable>
-      </ion-card-content>
-    </ion-card>
-    <ion-card (click)="expandItem(items[1])">
-      <ion-card-header color="tertiary">Anambra Office</ion-card-header>
-  
-      <ion-card-content style="padding: 0;">
-        <app-expandable expandHeight="600px" [expanded]="items[1].expanded">
-          <div class="expandible-container">
-            <div class="text-center">
-              <div class="my-sub-header">Address</div>
-              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
-    
-              <div class="my-sub-header">Contact Person</div>
-              <div>GLORY ETADUOVIE</div>
-    
-              <div class="my-sub-header">Telephone</div>
-              <div>08134757483</div>
-            </div>
-          </div>
-        </app-expandable>
-      </ion-card-content>
-    </ion-card>
-    <ion-card (click)="expandItem(items[2])">
-      <ion-card-header color="tertiary">Edo Office</ion-card-header>
-  
-      <ion-card-content style="padding: 0;">
-        <app-expandable expandHeight="600px" [expanded]="items[2].expanded">
-          <div class="expandible-container">
-            <div class="text-center">
-              <div class="my-sub-header">Address</div>
-              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
-    
-              <div class="my-sub-header">Contact Person</div>
-              <div>GLORY ETADUOVIE</div>
-    
-              <div class="my-sub-header">Telephone</div>
-              <div>08134757483</div>
-            </div>
-          </div>
-        </app-expandable>
-      </ion-card-content>
-    </ion-card>
-    <ion-card (click)="expandItem(items[3])">
-      <ion-card-header color="tertiary">Asaba Office</ion-card-header>
-  
-      <ion-card-content style="padding: 0;">
-        <app-expandable expandHeight="600px" [expanded]="items[3].expanded">
-          <div class="expandible-container">
-            <div class="text-center">
-              <div class="my-sub-header">Address</div>
-              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
-    
-              <div class="my-sub-header">Contact Person</div>
-              <div>GLORY ETADUOVIE</div>
-    
-              <div class="my-sub-header">Telephone</div>
-              <div>08134757483</div>
-            </div>
-          </div>
-        </app-expandable>
-      </ion-card-content>
-    </ion-card>
-    <ion-card (click)="expandItem(items[4])">
-      <ion-card-header color="tertiary">Ondo Office</ion-card-header>
-  
-      <ion-card-content style="padding: 0;">
-        <app-expandable expandHeight="600px" [expanded]="items[4].expanded">
-          <div class="expandible-container">
-            <div class="text-center">
-              <div class="my-sub-header">Address</div>
-              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
-    
-              <div class="my-sub-header">Contact Person</div>
-              <div>GLORY ETADUOVIE</div>
-    
-              <div class="my-sub-header">Telephone</div>
-              <div>08134757483</div>
-            </div>
-          </div>
-        </app-expandable>
-      </ion-card-content>
-    </ion-card>
-    <ion-card (click)="expandItem(items[5])">
-      <ion-card-header color="tertiary">Enugu Office</ion-card-header>
-  
-      <ion-card-content style="padding: 0;">
-        <app-expandable expandHeight="600px" [expanded]="items[5].expanded">
-          <div class="expandible-container">
-            <div class="text-center">
-              <div class="my-sub-header">Address</div>
-              <div>22, Otukpo Street, Off Gimbya Street, Area 11, Garki Abuja, Nigeria</div>
-    
-              <div class="my-sub-header">Contact Person</div>
-              <div>GLORY ETADUOVIE</div>
-    
-              <div class="my-sub-header">Telephone</div>
-              <div>08134757483</div>
-            </div>
-          </div>
-        </app-expandable>
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
+
+  <div *ngIf="isLoading">
+    <div class="custom-skeleton">
+      <ion-searchbar></ion-searchbar>
+      <ion-list>
+        <ion-card>
+          <ion-card-header color="primary">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card-header>
+      
+          <ion-card-content style="padding: 0;">
+            <app-expandable expandHeight="600px" [expanded]="true">
+              <div class="expandible-container">
+                <div class="text-center">
+                  <div class="my-sub-header">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                  </div>
+                  <div><ion-skeleton-text animated></ion-skeleton-text></div>
+        
+                  <div class="my-sub-header"><ion-skeleton-text animated></ion-skeleton-text></div>
+                  <div><ion-skeleton-text animated></ion-skeleton-text></div>
+        
+                  <div class="my-sub-header"><ion-skeleton-text animated></ion-skeleton-text></div>
+                  <div><ion-skeleton-text animated></ion-skeleton-text></div>
+                </div>
+              </div>
+            </app-expandable>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="primary">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card-header>
+      
+          <ion-card-content style="padding: 0;">
+            <app-expandable expandHeight="600px" [expanded]="false">
+            </app-expandable>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="primary">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card-header>
+      
+          <ion-card-content style="padding: 0;">
+            <app-expandable expandHeight="600px" [expanded]="false">
+            </app-expandable>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="primary">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card-header>
+      
+          <ion-card-content style="padding: 0;">
+            <app-expandable expandHeight="600px" [expanded]="false">
+            </app-expandable>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="primary">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card-header>
+      
+          <ion-card-content style="padding: 0;">
+            <app-expandable expandHeight="600px" [expanded]="false">
+            </app-expandable>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="primary">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card-header>
+      
+          <ion-card-content style="padding: 0;">
+            <app-expandable expandHeight="600px" [expanded]="false">
+            </app-expandable>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="primary">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card-header>
+      
+          <ion-card-content style="padding: 0;">
+            <app-expandable expandHeight="600px" [expanded]="false">
+            </app-expandable>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+
+    </div>
+  </div>
 </ion-content>

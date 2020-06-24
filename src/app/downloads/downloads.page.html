@@ -8,38 +8,71 @@
 </ion-header>
 
 
-<ion-content class="ion-padding">
-  <ion-searchbar></ion-searchbar>
-  <ion-list>
-    <ion-item class="style-list">
-      <a href="">Death Benefit Checklist</a>
-    </ion-item>
-    <ion-item class="style-list">
-      <a href="">Lump Sum withdrawal Checklist</a>
-    </ion-item>
-    <ion-item class="style-list">
-      <a href="">Annuity Request Checklist</a>
-    </ion-item>
-    <ion-item class="style-list">
-      <a href="">
-        Request For Lump Sum & Programmed Withdrawal Payment Checklist
-        (State Govt Retirees) Download File size: (222KB)
-      </a>
-    </ion-item>
-    <ion-item class="style-list">
-      <a href="">En-Bloc Payment Request Checklist</a>
-    </ion-item>
-    <ion-item class="style-list">
-      <a href="">
-        Request For Lump Sum & Programmed Withdrawal Payment Checklist
-        (State Govt Retirees) Download File size: (222KB)
-      </a>
-    </ion-item>
-    <ion-item class="style-list">
-      <a href="">En-Bloc Payment Request Checklist</a>
-    </ion-item>
-    <ion-item class="style-list">
-      <a href="">Lump Sum withdrawal Checklist</a>
-    </ion-item>
-  </ion-list>
+<ion-content>
+  <div *ngIf="!isLoading">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Select category</ion-label>
+            <ion-select (ionChange)="selectCategory($event)" [(ngModel)]="selectedCategory">
+              <ion-select-option value="all">All</ion-select-option>
+              <ion-select-option value="Checklist Requirement">Checklist Requirement</ion-select-option>
+              <ion-select-option value="Data Re-capture">Data Re-capture</ion-select-option>
+              <ion-select-option value="Letters">Letters</ion-select-option>
+              <ion-select-option value="Multifund">Multi fund</ion-select-option>
+              <ion-select-option value="Guidelines">Guidelines</ion-select-option>
+              <ion-select-option value="Newsletters">Newsletters</ion-select-option>
+              <ion-select-option value="Forms">Forms</ion-select-option>
+              <ion-select-option value="Financial Statement">Financial Statement</ion-select-option>
+              <ion-select-option value="Financial Reports">Financial Reports</ion-select-option>
+              <ion-select-option value="Financial Report RSA">Financial Report RSA</ion-select-option>
+              <ion-select-option value="Corporate Governance Statement">Corporate Governance Statement</ion-select-option>
+              <ion-select-option value="Financial Funds Statements">Financial Funds Statements</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-searchbar (ionInput)="filterDownloads($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item class="style-list" *ngFor="let download of downloads">
+        <a href="https://ieianchorpensions.com/uploads/documents/checklist-requirement/{{download.file_name}}">
+          {{ download.title }}
+        </a>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="isLoading">
+    <div class="custom-skeleton">
+      <ion-searchbar></ion-searchbar>
+      <ion-list>
+        <ion-item class="style-list">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-item>
+        <ion-item class="style-list">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-item>
+        <ion-item class="style-list">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-item>
+        <ion-item class="style-list">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-item>
+        <ion-item class="style-list">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-item>
+        <ion-item class="style-list">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-item>
+        <ion-item class="style-list">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-item>
+        <ion-item class="style-list">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>

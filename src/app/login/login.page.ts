@@ -25,7 +25,8 @@ export class LoginPage implements OnInit, OnDestroy {
 
   isLoading = false;
   authSubscription: Subscription;
-
+  pin = '';
+  password = '';
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -46,7 +47,7 @@ export class LoginPage implements OnInit, OnDestroy {
   ionViewWillEnter() {
     this.authSubscription = this.authService.userIsAuthenticated.subscribe(isAuth => {
       if (isAuth) {
-        this.router.navigateByUrl('/account-summary');
+        this.router.navigateByUrl('/account/tabs/account-summary');
       }
     });
   }
@@ -54,7 +55,7 @@ export class LoginPage implements OnInit, OnDestroy {
   authenticate(pin: string, password: string) {
     this.isLoading = true;
     this.loadingCtrl
-      .create({ keyboardClose: true, message: 'Logging in...' })
+      .create({ keyboardClose: true, message: 'Logging in...', mode: 'ios' })
       .then(loadingEl => {
         loadingEl.present();
         let authObs: Observable<AuthResponseData>;
@@ -70,7 +71,7 @@ export class LoginPage implements OnInit, OnDestroy {
               // let message = 'Could not sign in at the moment, please try again.';
               this.showAlert(resData.msg);
             } else {
-              this.router.navigateByUrl('/account-summary');
+              this.router.navigateByUrl('/account');
             }
           },
           (error: FailedLogin) => {
@@ -96,7 +97,7 @@ export class LoginPage implements OnInit, OnDestroy {
     const pin = form.value.pin;
     const password = form.value.password;
     this.authenticate(pin, password);
-    form.reset();
+    // form.reset();
   }
 
   private showAlert(message: string) {

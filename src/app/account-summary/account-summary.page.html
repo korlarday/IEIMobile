@@ -41,7 +41,7 @@
         </ion-segment-button>
       </ion-segment>
     </div>
-  
+   
       
       <div [ngSwitch]="rsa" padding>
         <ion-list *ngSwitchCase="'compulsory'">
@@ -51,6 +51,14 @@
           <ion-grid>
             <ion-row>
               <ion-col>
+                <ion-card class="ion-text-center contribution-summary">
+                  <ion-card-content color="primary">
+                    <ion-label class="label-header">
+                      Fund Type
+                    </ion-label>
+                    {{ schemeName }}
+                  </ion-card-content>
+                </ion-card>
                 <ion-card class="ion-text-center contribution-summary">
                   <ion-card-content color="primary">
                     <ion-label class="label-header">

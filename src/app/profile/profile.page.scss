@@ -1,11 +1,14 @@
-ion-content{
-    // --ion-background-color: #09347a;
+ion-content {
+    --background: #F0F0F0;
 }
 ion-card{
-
+    margin:0;
+    padding:0;
     background-color: white;
 }
 .expandible-container{
+    background-color: #f2f2f2;
+    color: #fff;
     padding: 10px;
     .info-container{
         border-bottom: 1px solid #ebebeb;
@@ -17,12 +20,16 @@ ion-card{
         display:block;
     }
     label.title{
-        color: #cd9536
+        color: #404040;
+        font-size: 16px;
+        font-weight: bold;
+        padding-top:3px;
     }
     label.result{
         text-align: center;
         font-weight: bold;
-        color: #09347a;
-        font-size: 16px;
+        color: var(--ion-color-primary);
+        font-size: 17px;
+        padding-top: 5px;
     }
 }

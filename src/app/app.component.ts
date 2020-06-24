@@ -18,6 +18,9 @@ export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authSub: Subscription;
   private previousAuthState = false;
+  clientName = '';
+  rsaPin = '';
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -37,11 +40,18 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.authSub = this.authService.userIsAuthenticated.subscribe(isAuth => {
-      // if (!isAuth && this.previousAuthState !== isAuth) {
-      //   this.router.navigateByUrl('/login');
-      // }
+      if (!isAuth && this.previousAuthState !== isAuth) {
+        this.router.navigateByUrl('/login');
+      }
+      console.log('is authenticated: ' + isAuth);
       if (isAuth) {
         this.isAuthenticated = isAuth;
+        this.authService.user.subscribe(user => {
+          if (user !== null) {
+            this.clientName = user.firstname.toUpperCase() + ' ' + user.lastname.toUpperCase();
+            this.rsaPin = user._pin;
+          }
+        });
       } else {
         this.isAuthenticated = isAuth;
       }

@@ -8,50 +8,55 @@
 </ion-header>
 
 <ion-content>
-  <!-- <div text-center *ngIf="isLoading">
-    <ion-spinner color="primary"></ion-spinner>
-  </div> -->
-  <ion-grid no-padding> 
-    <ion-row>
-      <ion-col size-sm="6" offset-sm="3" no-padding>
-        <ion-img src="assets/img/lockdown.png"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size-sm="6" offset-sm="3" class="ion-padding">
-        <p>
-          Dear Esteemed Customer,</p>
-          
-          <p>
-            Following the easing of the lockdown, 
-            we have opened up few of our branches to serve you across the country. 
-            We are open for business from Monday- Friday 10:00am-3p.m daily
-          </p>
+  <div *ngIf="!isLoading">
+    <ion-grid style="margin:0;padding:0"> 
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3" class="no-padding" style="margin:0;padding:0">
+          <ion-img *ngIf="news.imageUrl !== ''" src="http://127.0.0.1:8000/media/images/news/images/{{ news.imageUrl }}"></ion-img>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3" class="ion-padding">
+          <div [innerHTML]="news.body" class="news-body">
   
-          <p>
-            Please note that whilst we are committed to serving you in our branches, 
-            it is important that we continue to observe precautionary measures to keep 
-            all customers and members of our staff safe.
-          </p>
-  
-            <p>
-              Our alternative channels are still available :
-            </p>
-
-
-          WhatsApp Chat:  08165722731 <br>
-          Mobile:  08165722731, 08078450652 <br>
-          Mobile App:  IEI Mobile <br>
-          Website:   IEI Anchor Pensions Ltd <br>
-          Email:  cservice@ieianchorpensions.com <br>
-          Data-recapture:  Datarecapture Exercise <br>
-      
-      </ion-col>
-    </ion-row>
-    <!-- <ion-row *ngIf="isBookable">
-      <ion-col size-sm="6" offset-sm="3" text-center>
-        <ion-button class="primary" margin (click)="onBookPlace()">Book</ion-button>
-      </ion-col>
-    </ion-row> -->
-  </ion-grid>
+          </div>
+          <!-- <div class="news-body">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, molestiae error tempore culpa odit doloremque ex accusantium expedita magnam assumenda dolore cumque maiores vitae voluptate ipsa saepe totam sapiente aliquam?
+          </div> -->
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row *ngIf="isBookable">
+        <ion-col size-sm="6" offset-sm="3" text-center>
+          <ion-button class="primary" margin (click)="onBookPlace()">Book</ion-button>
+        </ion-col>
+      </ion-row> -->
+    </ion-grid>
+  </div>
+  <div *ngIf="isLoading">
+    <div class="custom-skeleton">
+      <ion-grid style="margin:0;padding:0"> 
+        <ion-row>
+          <ion-col size-sm="6" offset-sm="3" style="margin:0;padding:0">
+            <div style="width:100%;height:300px;background-color:#e6e6e6;"></div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-sm="6" offset-sm="3" class="ion-padding">
+            <div>
+              <ion-skeleton-text animated></ion-skeleton-text>
+              <ion-skeleton-text animated></ion-skeleton-text>
+              <ion-skeleton-text animated></ion-skeleton-text>
+              <ion-skeleton-text animated></ion-skeleton-text>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </div>
+          </ion-col>
+        </ion-row>
+        <!-- <ion-row *ngIf="isBookable">
+          <ion-col size-sm="6" offset-sm="3" text-center>
+            <ion-button class="primary" margin (click)="onBookPlace()">Book</ion-button>
+          </ion-col>
+        </ion-row> -->
+      </ion-grid>
+    </div>
+  </div>
 </ion-content>

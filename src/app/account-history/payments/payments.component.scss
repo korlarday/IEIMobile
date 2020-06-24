@@ -1,0 +1,54 @@
+ion-content {
+    --background: #F0F0F0;
+}
+div.header {
+    background-color: #09347a;
+    color: #ffffff;
+    overflow: hidden;
+    margin-top: -10px;
+    .right-info {
+        float: left;
+        text-align: right;
+        width: 50%;
+        div {
+            padding-top: 6px
+        }
+        .total-amount {
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+    .left-info {
+        float: left;
+        width: 50%;
+        div {
+            padding-top: 6px
+        }
+        .date {
+            font-size: 13px;
+        }
+    }
+}
+
+div.payment-item{
+    border-top: 2px solid #D2D2D3;
+    border-bottom: 2px solid #D2D2D3;
+    padding: 15px;
+    margin: 10px 0 10px 0;
+    overflow: hidden;
+    background-color: #ffffff;
+    .payment-date{
+        float: left;
+        width: 50%;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    .payment-amount{
+        float:left;
+        width:50%;
+        text-align: right;
+        color: #09347a;
+        font-weight: bold;
+        font-size: 16px;
+    }
+}

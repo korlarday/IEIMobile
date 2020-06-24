@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary" class="toolbar">
+    <ion-buttons slot="primary">
+      <ion-button (click)="onClose()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Contribution History</ion-title>
+    
+  </ion-toolbar>
+    <div class="header ion-padding">
+      <div class="left-info">
+        <div>Contributions</div>
+        <div class="date">From {{ from | date }}</div>
+        <div class="date">To {{ to | date }}</div>
+      </div>
+      <div class="right-info">
+        <div>Amount Contributed</div>
+        <div class="date">Total: {{ totalContributions | currency: 'NGN':'symbol-narrow' }}</div>
+        <div class="date">Net: {{ netContributions | currency: 'NGN':'symbol-narrow' }}</div>
+      </div>
+    </div>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div class="payment-item" *ngFor="let payment of payments">
+      <div class="payment-date">{{ payment.Narration }}</div>
+      <div class="payment-amount">{{ payment.Total_Contribution| currency:'NGN':'symbol-narrow' }}</div>
+    </div>
+  </div>
+</ion-content>

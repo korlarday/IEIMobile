@@ -11,19 +11,31 @@
 <ion-content padding class="ion-padding">
 
   <div class="form-wrap">
-    <form>
+    <form [formGroup]="form">
 
       <ion-item>
-        <ion-label stacked>Your comment</ion-label>
-        <ion-textarea rows="7" required>
-          </ion-textarea>
+        <ion-label position="floating">Feedback Type</ion-label>
+        <ion-select formControlName="type">
+          <ion-select-option value="Issue">Issue</ion-select-option>
+          <ion-select-option value="Suggestion">Suggestion</ion-select-option>
+          <ion-select-option value="Enquiry">Enquiry</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Subject</ion-label>
+        <ion-input type="text" formControlName="subject"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Message</ion-label>
+        <ion-textarea rows="7" formControlName="message">
+        </ion-textarea>
       </ion-item>
     
       <ion-row>
         <ion-col text-center>
           <div class="button-container" style="margin-top:5px;">
             <!-- <ion-button block  class="login">SIGN IN</ion-button> -->
-            <ion-button color="primary" shape="round">SEND</ion-button>
+            <ion-button color="primary" (click)="OnSubmitForm()" [disabled]="form.invalid" shape="round">SEND</ion-button>
           </div>
           <!-- <p *ngIf="pleaseWait" class="white-bg" padding>Sending your feedback...</p> -->
         </ion-col>

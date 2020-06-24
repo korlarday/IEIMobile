@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { AuthService } from '../Auth/auth.service';
 import { AccountSummary } from '../services/models';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-summary',
@@ -38,7 +39,9 @@ export class AccountSummaryPage implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private authService: AuthService,
-    private loadingCtrl: LoadingController) { }
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private router: Router) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -47,69 +50,42 @@ export class AccountSummaryPage implements OnInit {
       this.employeeService.accountSummary(this.pin).subscribe((accSummary: AccountSummary) => {
         this.accountSummary = accSummary;
         console.log(this.accountSummary);
-
-        this.RSABalance = this.accountSummary.balanceMandatory;
-        this.fundID = this.accountSummary.fundId;
-        this.fundType = this.getFundType(this.fundID);
-        this.schemeName = this.accountSummary.schemeName;
-        this.totalContribution = this.accountSummary.totalContributionMandatory;
-        this.netContribution = this.accountSummary.netContributionMandatory;
-        this.growth = this.accountSummary.growthMandatory;
-        this.totalUnits = this.accountSummary.totalUnitMandatory;
-        this.unitPrice = this.accountSummary.unitPrice;
-
-        // voluntary
-        this.vRSABalance = this.accountSummary.balanceVoluntary;
-        this.vschemeName = this.accountSummary.schemeName;
-        this.vtotalContribution = this.accountSummary.totalContributionVoluntary;
-        this.vnetContribution = this.accountSummary.netContributionVoluntary;
-        this.vGrowth = this.accountSummary.growthVoluntary;
-        this.vTotalUnits = this.accountSummary.totalUnitVoluntary;
-        this.vUnitPrice = this.accountSummary.price;
-
-        // get today's date
-        const today = new Date();
-        this.toDay = today.toDateString();
+        if(this.accountSummary != null){
+          this.RSABalance = this.accountSummary.balanceMandatory;
+          this.fundID = this.accountSummary.fundId;
+          this.fundType = this.getFundType(this.fundID);
+          this.schemeName = this.accountSummary.schemeName;
+          this.totalContribution = this.accountSummary.totalContributionMandatory;
+          this.netContribution = this.accountSummary.netContributionMandatory;
+          this.growth = this.accountSummary.growthMandatory;
+          this.totalUnits = this.accountSummary.totalUnitMandatory;
+          this.unitPrice = this.accountSummary.unitPrice;
+  
+          // voluntary
+          this.vRSABalance = this.accountSummary.balanceVoluntary;
+          this.vschemeName = this.accountSummary.schemeName;
+          this.vtotalContribution = this.accountSummary.totalContributionVoluntary;
+          this.vnetContribution = this.accountSummary.netContributionVoluntary;
+          this.vGrowth = this.accountSummary.growthVoluntary;
+          this.vTotalUnits = this.accountSummary.totalUnitVoluntary;
+          this.vUnitPrice = this.accountSummary.price;
+  
+          // get today's date
+          const today = new Date();
+          this.toDay = today.toDateString();
+        }
         this.isLoading = false;
+      },
+      error => {
+        this.alertCtrl.create({
+          header: 'An error occured!',
+          message: 'Could not fetch account summary at the momemt.',
+          buttons: [{ text: 'Okay', handler: () => {
+            // this.router.navigate(['/news']);
+          }}]
+        }).then(alertEl => alertEl.present());
       });
-      // this.loadingCtrl
-      // .create({
-      //   keyboardClose: true,
-      //   message: 'Please wait...' ,
-      //   spinner: 'lines',
-      // })
-      // .then(loadingEl => {
-      //   loadingEl.present();
-      //   this.employeeService.accountSummary(this.pin).subscribe((accSummary: AccountSummary) => {
-      //     this.accountSummary = accSummary;
-      //     loadingEl.dismiss();
-      //     console.log(this.accountSummary);
 
-      //     this.RSABalance = this.accountSummary.balanceMandatory;
-      //     this.fundID = this.accountSummary.fundId;
-      //     this.fundType = this.getFundType(this.fundID);
-      //     this.schemeName = this.accountSummary.schemeName;
-      //     this.totalContribution = this.accountSummary.totalContributionMandatory;
-      //     this.netContribution = this.accountSummary.netContributionMandatory;
-      //     this.growth = this.accountSummary.growthMandatory;
-      //     this.totalUnits = this.accountSummary.totalUnitMandatory;
-      //     this.unitPrice = this.accountSummary.unitPrice;
-
-      //     // voluntary
-      //     this.vRSABalance = this.accountSummary.balanceVoluntary;
-      //     this.vschemeName = this.accountSummary.schemeName;
-      //     this.vtotalContribution = this.accountSummary.totalContributionVoluntary;
-      //     this.vnetContribution = this.accountSummary.netContributionVoluntary;
-      //     this.vGrowth = this.accountSummary.growthVoluntary;
-      //     this.vTotalUnits = this.accountSummary.totalUnitVoluntary;
-      //     this.vUnitPrice = this.accountSummary.price;
-
-      //     // get today's date
-      //     const today = new Date();
-      //     this.toDay = today.toDateString();
-      //     this.isLoading = false;
-      //   });
-      // });
     });
   }
 

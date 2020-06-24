@@ -16,8 +16,10 @@ export class RequestInterceptor implements HttpInterceptor {
         this.authService.token.subscribe(token => {
             this.token = token;
         });
-        if (this.token != null) {
-            console.log("from interceptor available: " + this.token);
+        if (req.headers.get('skip')) {
+            return next.handle(req);
+        }
+        else if (this.token != null) {
             // headers: req.headers.set('Authorization', this.token.toString())
             const clonedReq = req.clone({
                 withCredentials: true,
@@ -39,7 +41,6 @@ export class RequestInterceptor implements HttpInterceptor {
                 )
             );
         } else {
-            console.log("from interceptor not available: " + this.token);
             return next.handle(req.clone());
         }
 

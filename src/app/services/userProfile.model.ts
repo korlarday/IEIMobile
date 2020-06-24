@@ -4,3 +4,4 @@ export class UserProfile{
         public password: string
     ) {}
 }
+

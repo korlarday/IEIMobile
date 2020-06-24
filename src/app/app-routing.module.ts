@@ -29,8 +29,8 @@ const routes: Routes = [
     loadChildren: () => import('./news/news.module').then( m => m.NewsPageModule)
   },
   {
-    path: 'account-summary',
-    loadChildren: () => import('./account-summary/account-summary.module').then( m => m.AccountSummaryPageModule),
+    path: 'account',
+    loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule),
     canLoad: [AuthGuard]
   },
   {
@@ -57,7 +57,7 @@ const routes: Routes = [
   {
     path: 'feedback',
     loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
-  },
+  }
 ];
 
 @NgModule({

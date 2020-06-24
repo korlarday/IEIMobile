@@ -7,99 +7,235 @@
 </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-searchbar></ion-searchbar>
+<ion-content>
+  <div *ngIf="!isLoading">
 
-  <ion-list>
-    <ion-card (click)="expandItem(items[0])">
-      <ion-card-header color="tertiary">
-        What is the Contributory Pension Scheme (CPS)?
-      </ion-card-header>
+    <div class="ion-padding">
+      <ion-segment [(ngModel)]="category" mode="ios">
+        <ion-segment-button value="all">
+          <ion-label>All</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="general">
+          General
+        </ion-segment-button>
+        <ion-segment-button value="rsa">
+          RSA
+        </ion-segment-button>
+        <ion-segment-button value="retirement">
+          Retirement
+        </ion-segment-button>
+      </ion-segment>
+      <ion-segment [(ngModel)]="category" mode="ios" style="margin-top: 6px;">
+        <ion-segment-button value="multifunds">
+          Multi Funds
+        </ion-segment-button>
+        <ion-segment-button value="micropension">
+          Micro Pension
+        </ion-segment-button>
+        <ion-segment-button value="covid">
+          <ion-label>Covid 19</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div [ngSwitch]="category">
+      <ion-list *ngSwitchCase="'all'">
+        <ion-searchbar (ionInput)="filterFaqs($event)" [(ngModel)]="allText"></ion-searchbar>
+      
+        <ion-list>
+          <ion-card *ngFor="let faq of faqs; index as i" (click)="expandItem(items[i])">
+            <ion-card-header color="primary" [innerHtml]="faq.question">
+              
+            </ion-card-header>
+        
+            <ion-card-content style="padding: 0;">
+              <app-expandable expandHeight="600px" [expanded]="items[i].expanded">
+                <div class="expandible-container">
+                  <p [innerHTML]="faq.answer">
+                    
+                  </p>
+                </div>
+              </app-expandable>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+      </ion-list>
+      <ion-list *ngSwitchCase="'general'">
+        <ion-searchbar (ionInput)="filterGeneral($event)" [(ngModel)]="generalText"></ion-searchbar>
+      
+        <ion-list>
+          <ion-card *ngFor="let faq of general; index as i" (click)="expandItem(items[i])">
+            <ion-card-header color="primary" [innerHtml]="faq.question">
+              
+            </ion-card-header>
+        
+            <ion-card-content style="padding: 0;">
+              <app-expandable expandHeight="600px" [expanded]="items[i].expanded">
+                <div class="expandible-container">
+                  <p [innerHTML]="faq.answer">
+                    
+                  </p>
+                </div>
+              </app-expandable>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+      </ion-list>
+      <ion-list *ngSwitchCase="'rsa'">
+        <ion-searchbar (ionInput)="filterRsa($event)" [(ngModel)]="rsaText"></ion-searchbar>
+      
+        <ion-list>
+          <ion-card *ngFor="let faq of rsa; index as i" (click)="expandItem(items[i])">
+            <ion-card-header color="primary" [innerHtml]="faq.question">
+              
+            </ion-card-header>
+        
+            <ion-card-content style="padding: 0;">
+              <app-expandable expandHeight="600px" [expanded]="items[i].expanded">
+                <div class="expandible-container">
+                  <p [innerHTML]="faq.answer">
+                    
+                  </p>
+                </div>
+              </app-expandable>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+      </ion-list>
+      <ion-list *ngSwitchCase="'retirement'">
+        <ion-searchbar (ionInput)="filterRetirement($event)" [(ngModel)]="retirementText"></ion-searchbar>
+      
+        <ion-list>
+          <ion-card *ngFor="let faq of retirement; index as i" (click)="expandItem(items[i])">
+            <ion-card-header color="primary" [innerHtml]="faq.question">
+              
+            </ion-card-header>
+        
+            <ion-card-content style="padding: 0;">
+              <app-expandable expandHeight="600px" [expanded]="items[i].expanded">
+                <div class="expandible-container">
+                  <p [innerHTML]="faq.answer">
+                    
+                  </p>
+                </div>
+              </app-expandable>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+      </ion-list>
+      <ion-list *ngSwitchCase="'multifunds'">
+        <ion-searchbar (ionInput)="filterMultifunds($event)" [(ngModel)]="multiText"></ion-searchbar>
+      
+        <ion-list>
+          <ion-card *ngFor="let faq of multifunds; index as i" (click)="expandItem(items[i])">
+            <ion-card-header color="primary" [innerHtml]="faq.question">
+              
+            </ion-card-header>
+        
+            <ion-card-content style="padding: 0;">
+              <app-expandable expandHeight="600px" [expanded]="items[i].expanded">
+                <div class="expandible-container">
+                  <p [innerHTML]="faq.answer">
+                    
+                  </p>
+                </div>
+              </app-expandable>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+      </ion-list>
+      <ion-list *ngSwitchCase="'micropension'">
+        <ion-searchbar (ionInput)="filterMicro($event)" [(ngModel)]="microText"></ion-searchbar>
+      
+        <ion-list>
+          <ion-card *ngFor="let faq of microPension; index as i" (click)="expandItem(items[i])">
+            <ion-card-header color="primary" [innerHtml]="faq.question">
+              
+            </ion-card-header>
+        
+            <ion-card-content style="padding: 0;">
+              <app-expandable expandHeight="600px" [expanded]="items[i].expanded">
+                <div class="expandible-container">
+                  <p [innerHTML]="faq.answer">
+                    
+                  </p>
+                </div>
+              </app-expandable>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+      </ion-list>
+      <ion-list *ngSwitchCase="'covid'">
+        <ion-searchbar (ionInput)="filterCovid($event)" [(ngModel)]="covidText"></ion-searchbar>
+      
+        <ion-list>
+          <ion-card *ngFor="let faq of covid; index as i" (click)="expandItem(items[i])">
+            <ion-card-header color="primary" [innerHtml]="faq.question">
+            </ion-card-header>
+        
+            <ion-card-content style="padding: 0;">
+              <app-expandable expandHeight="600px" [expanded]="items[i].expanded">
+                <div class="expandible-container">
+                  <p [innerHTML]="faq.answer">
+                  </p>
+                </div>
+              </app-expandable>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+      </ion-list>
+    </div>
+  </div>
+
+
+  <div *ngIf="isLoading">
+    <ion-searchbar></ion-searchbar>
   
-      <ion-card-content style="padding: 0;">
-        <app-expandable expandHeight="600px" [expanded]="items[0].expanded">
-          <div class="expandible-container">
-            <p>
-              The Contributory Pension Scheme (CPS) which commenced in 2004 is fully funded,
-              privately managed, with third party in custody of the funds and assests and is
-              based on individual accounts. It ensures that everyone who has worked receives
-              his/her retirement benefits as at when due.
-            </p>
-          </div>
-        </app-expandable>
-      </ion-card-content>
-    </ion-card>
-    <ion-card (click)="expandItem(items[1])">
-      <ion-card-header color="tertiary">
-        Is CPS backed by any Government Regulation?
-      </ion-card-header>
-  
-      <ion-card-content style="padding: 0;">
-        <app-expandable expandHeight="600px" [expanded]="items[1].expanded">
-          <div class="expandible-container">
-            <p>
-              The Contributory Pension Scheme (CPS) which commenced in 2004 is fully funded,
-              privately managed, with third party in custody of the funds and assests and is
-              based on individual accounts. It ensures that everyone who has worked receives
-              his/her retirement benefits as at when due.
-            </p>
-          </div>
-        </app-expandable>
-      </ion-card-content>
-    </ion-card>
-    <ion-card (click)="expandItem(items[2])">
-      <ion-card-header color="tertiary">
-        What regulatory body supervises this scheme?
-      </ion-card-header>
-  
-      <ion-card-content style="padding: 0;">
-        <app-expandable expandHeight="600px" [expanded]="items[2].expanded">
-          <div class="expandible-container">
-            <p>
-              The Contributory Pension Scheme (CPS) which commenced in 2004 is fully funded,
-              privately managed, with third party in custody of the funds and assests and is
-              based on individual accounts. It ensures that everyone who has worked receives
-              his/her retirement benefits as at when due.
-            </p>
-          </div>
-        </app-expandable>
-      </ion-card-content>
-    </ion-card>
-    <ion-card (click)="expandItem(items[3])">
-      <ion-card-header color="tertiary">
-        Is Contributory Pension Scheme (CPS) mandatory for every worker?
-      </ion-card-header>
-  
-      <ion-card-content style="padding: 0;">
-        <app-expandable expandHeight="600px" [expanded]="items[3].expanded">
-          <div class="expandible-container">
-            <p>
-              The Contributory Pension Scheme (CPS) which commenced in 2004 is fully funded,
-              privately managed, with third party in custody of the funds and assests and is
-              based on individual accounts. It ensures that everyone who has worked receives
-              his/her retirement benefits as at when due.
-            </p>
-          </div>
-        </app-expandable>
-      </ion-card-content>
-    </ion-card>
-    <ion-card (click)="expandItem(items[4])">
-      <ion-card-header color="tertiary">
-        How do I participate in the Scheme?
-      </ion-card-header>
-  
-      <ion-card-content style="padding: 0;">
-        <app-expandable expandHeight="600px" [expanded]="items[4].expanded">
-          <div class="expandible-container">
-            <p>
-              The Contributory Pension Scheme (CPS) which commenced in 2004 is fully funded,
-              privately managed, with third party in custody of the funds and assests and is
-              based on individual accounts. It ensures that everyone who has worked receives
-              his/her retirement benefits as at when due.
-            </p>
-          </div>
-        </app-expandable>
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
+    <ion-list>
+      <ion-card>
+        <ion-card-header color="primary">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-card-header>
+    
+        <ion-card-content style="padding: 0;">
+          <app-expandable expandHeight="600px" [expanded]="true">
+            <div class="expandible-container">
+              <p>
+                <ion-skeleton-text></ion-skeleton-text>
+                <ion-skeleton-text></ion-skeleton-text>
+                <ion-skeleton-text></ion-skeleton-text>
+                <ion-skeleton-text></ion-skeleton-text>
+                <ion-skeleton-text></ion-skeleton-text>
+                <ion-skeleton-text></ion-skeleton-text>
+              </p>
+            </div>
+          </app-expandable>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header color="primary">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-card-header>
+    
+        <ion-card-content style="padding: 0;">
+          <app-expandable expandHeight="600px" [expanded]="false">
+            <div class="expandible-container">
+            </div>
+          </app-expandable>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header color="primary">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-card-header>
+    
+        <ion-card-content style="padding: 0;">
+          <app-expandable expandHeight="600px" [expanded]="false">
+            <div class="expandible-container">
+            </div>
+          </app-expandable>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
 </ion-content>

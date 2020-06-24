@@ -1,9 +1,20 @@
+ion-content {
+    --background: #F0F0F0;
+}
 // ion-card-header{
 //     color: #09347a !important;
 //     font-size:19px;
 // }
 .expandible-container{
     padding: 10px;
+    background-color: #f2f2f2;
+}
+.my-sub-header {
+    margin-top: 5px;
+    color: black;
+}
+.my-sub-header + div {
+    padding: 0 0 0 7px;
 }
 
 // ion-card, ion-searchbar{

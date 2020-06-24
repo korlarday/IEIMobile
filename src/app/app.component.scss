@@ -26,3 +26,20 @@ ion-content {
     background-color: transparent !important;
     color: #fff;
 }
+
+.active-link{
+    --background:var(--ion-color-primary);
+    ion-label, ion-icon{
+        color: #fff !important;
+    }
+}
+
+.user-text {
+    margin: 15px 10px 10px 10px;
+    padding-left: 15px;
+    border-left:8px solid var(--ion-color-secondary);
+    font-weight:bold;
+    div {
+        color: var(--ion-color-primary);
+    }
+}

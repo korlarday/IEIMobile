@@ -1,3 +1,28 @@
+ion-content {
+  --background: #F0F0F0;
+}
 .expandible-container{
     padding: 20px 10px 12px 10px;
+    background-color: #f2f2f2;
+    color: #333333;
+}
+
+ion-segment {
+    border: 1px solid var(--ion-color-primary);
+    margin: 0;
+  }
+ion-segment-button{
+  --indicator-box-shadow: transparent!important;
+  border-radius: 0 !important;
+  padding: 0.1rem;
+  margin: 0;
+  --background:white;
+  --color:#2d2e87;
+  --background-checked: var(--ion-color-primary)!important;
+  --color-checked: white;
+  --indicator-color : transparent!important; /* this solution */
+}
+
+.break-segment {
+  display: block !important;
 }

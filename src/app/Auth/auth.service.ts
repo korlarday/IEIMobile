@@ -28,7 +28,7 @@ export interface AuthResponseData {
 export class AuthService implements OnDestroy {
 
   baseUrl = 'https://ffpro.ieianchorpensions.com/wildfly/FFPSelfService-web/rest/selfservice/';
-  private user = new BehaviorSubject<UserAuthData>(null);
+  public user = new BehaviorSubject<UserAuthData>(null);
   private activeLogoutTimer: any;
 
   constructor(private http: HttpClient) { }
@@ -104,7 +104,7 @@ export class AuthService implements OnDestroy {
     return this.user.asObservable().pipe(
       map(user => {
         if (user) {
-          return !!user._token;
+          return true;
         } else {
           return false;
         }

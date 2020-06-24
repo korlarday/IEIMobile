@@ -7,14 +7,13 @@
 </ion-toolbar>
 </ion-header>
 
-<ion-content class="content">
+<ion-content class="ion-padding-top">
  
+  <div *ngIf="!isLoading">
     <ion-card (click)="expandItem(items[0])">
-      <ion-card-header color="tertiary">
-        <ion-card-title>
+      <ion-card-header color="primary">
           <!-- <img src="assets/img/bullet.png" style="width: 30px;position: relative;top:8px"> -->
           Bio Data
-        </ion-card-title>
       </ion-card-header>
   
       <ion-card-content style="padding: 0;">
@@ -22,46 +21,44 @@
           <div class="expandible-container">
             <div class="info-container">
               <label class="title">RSA PIN:</label>
-              <label class="result">PEN110007768292</label>
+              <label class="result">{{ bioData.employees.pin }}</label>
             </div>
             <div class="info-container">
               <label class="title">Title:</label>
-              <label class="result">Mr</label>
+              <label class="result">{{ bioData.employees.title }}</label>
             </div>
             <div class="info-container">
-              <label class="title">First Name:</label>
-              <label class="result">Rilwan</label>
+              <label class="title">Name:</label>
+              <label class="result">{{ bioData.employees.firstname }} {{ bioData.employees.surname}}</label>
             </div>
             <div class="info-container">
               <label class="title">Gender:</label>
-              <label class="result">Male</label>
+              <label class="result">{{ gender }}</label>
             </div>
             <div class="info-container">
               <label class="title">Email:</label>
-              <label class="result">reedwan47@gmail.com</label>
+              <label class="result">{{ bioData.employees.email }}</label>
             </div>
             <div class="info-container">
               <label class="title">Birth Date:</label>
-              <label class="result">26 Jan 1676</label>
+              <label class="result">{{ dateOfBirth }}</label>
             </div>
             <div class="info-container">
               <label class="title">Phone:</label>
-              <label class="result">+2348148366295</label>
+              <label class="result">{{ bioData.employees.mobilePhone }}</label>
             </div>
             <div class="info-container">
               <label class="title">State Of Posting:</label>
-              <label class="result">Abuja</label>
+              <label class="result">{{ stateOfPosting }}</label>
             </div>
           </div>
         </app-expandable>
       </ion-card-content>
     </ion-card>
     <ion-card (click)="expandItem(items[1])">
-      <ion-card-header color="tertiary">
-        <ion-card-title>
+      <ion-card-header color="primary">
           <!-- <img src="assets/img/bullet.png" style="width: 30px;position: relative;top:8px"> -->
           Next Of Kin
-        </ion-card-title>
       </ion-card-header>
   
       <ion-card-content style="padding: 0;">
@@ -69,34 +66,32 @@
           <div class="expandible-container">
             <div class="info-container">
               <label class="title">Name:</label>
-              <label class="result">Busari Rilwan Kolade</label>
+              <label class="result">{{ bioData.employees.nokSurname }} {{ bioData.employees.nokName }} {{ bioData.employees.nokOthername }}</label>
             </div>
             <div class="info-container">
               <label class="title">Phone:</label>
-              <label class="result">0813847483</label>
+              <label class="result">{{ bioData.employees.nokMobilePhone }}</label>
             </div>
             <div class="info-container">
               <label class="title">Address:</label>
-              <label class="result">14 Akolade Avenue Madalla, Niger state</label>
+              <label class="result">{{ bioData.employees.nokCorraddress1 }} {{ bioData.employees.nokCorraddress2 }}</label>
             </div>
             <div class="info-container">
               <label class="title">State:</label>
-              <label class="result">Abuja</label>
+              <label class="result">{{ nokState }}</label>
             </div>
             <div class="info-container">
               <label class="title">Relationship:</label>
-              <label class="result">Father</label>
+              <label class="result">{{ bioData.employees.nokRelationship }}</label>
             </div>
           </div>
         </app-expandable>
       </ion-card-content>
     </ion-card>
     <ion-card (click)="expandItem(items[2])">
-      <ion-card-header color="tertiary">
-        <ion-card-title>
+      <ion-card-header color="primary">
           <!-- <img src="assets/img/bullet.png" style="width: 30px;position: relative;top:8px"> -->
           Employer
-        </ion-card-title>
       </ion-card-header>
   
       <ion-card-content style="padding: 0;">
@@ -104,19 +99,91 @@
           <div class="expandible-container">
             <div class="info-container">
               <label class="title">Employer:</label>
-              <label class="result">IEI-ANCHOR PENSION MANAGERS LIMITED</label>
+              <label class="result">{{ bioData.employees.employerName }}</label>
             </div>
             <div class="info-container">
               <label class="title">Employer Address:</label>
-              <label class="result">NO 22 OTUKPO AREA 11</label>
+              <label class="result">{{ bioData.employees.employerAddress }}</label>
             </div>
             <div class="info-container">
               <label class="title">Employer State:</label>
-              <label class="result">Abuja</label>
+              <label class="result">{{ employerState }}</label>
             </div>
           </div>
         </app-expandable>
       </ion-card-content>
     </ion-card>
+  </div>
+
+  <div *ngIf="isLoading">
+    <div class="custom-skeleton">
+      <ion-card>
+        <ion-card-header color="primary">
+            <!-- <img src="assets/img/bullet.png" style="width: 30px;position: relative;top:8px"> -->
+            Bio Data
+        </ion-card-header>
+    
+        <ion-card-content style="padding: 0;">
+          <app-expandable expandHeight="600px" [expanded]="items[0].expanded">
+            <div class="expandible-container">
+              <div class="info-container">
+                <ion-skeleton-text animated></ion-skeleton-text>
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </div>
+              <div class="info-container">
+                <label class="title"><ion-skeleton-text animated></ion-skeleton-text></label>
+                <label class="result"><ion-skeleton-text animated></ion-skeleton-text></label>
+              </div>
+              <div class="info-container">
+                <label class="title"><ion-skeleton-text animated></ion-skeleton-text></label>
+                <label class="result"><ion-skeleton-text animated></ion-skeleton-text></label>
+              </div>
+              <div class="info-container">
+                <label class="title"><ion-skeleton-text animated></ion-skeleton-text></label>
+                <label class="result"><ion-skeleton-text animated></ion-skeleton-text></label>
+              </div>
+              <div class="info-container">
+                <label class="title"><ion-skeleton-text animated></ion-skeleton-text></label>
+                <label class="result"><ion-skeleton-text animated></ion-skeleton-text></label>
+              </div>
+              <div class="info-container">
+                <label class="title"><ion-skeleton-text animated></ion-skeleton-text></label>
+                <label class="result"><ion-skeleton-text animated></ion-skeleton-text></label>
+              </div>
+              <div class="info-container">
+                <label class="title"><ion-skeleton-text animated></ion-skeleton-text></label>
+                <label class="result"><ion-skeleton-text animated></ion-skeleton-text></label>
+              </div>
+              <div class="info-container">
+                <label class="title"><ion-skeleton-text animated></ion-skeleton-text></label>
+                <label class="result"><ion-skeleton-text animated></ion-skeleton-text></label>
+              </div>
+            </div>
+          </app-expandable>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header color="primary">
+            <!-- <img src="assets/img/bullet.png" style="width: 30px;position: relative;top:8px"> -->
+            Next Of Kin
+        </ion-card-header>
+    
+        <ion-card-content style="padding: 0;">
+          <app-expandable expandHeight="340px" [expanded]="items[1].expanded">
+           
+          </app-expandable>
+        </ion-card-content>
+      </ion-card>
+      <ion-card (click)="expandItem(items[2])">
+        <ion-card-header color="primary">
+            Employer
+        </ion-card-header>
+    
+        <ion-card-content style="padding: 0;">
+          
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
 
 </ion-content>

@@ -1,3 +1,11 @@
+ion-content {
+    --background: #F0F0F0;
+}
 .style-list{
     padding-bottom: 10px;
+}
+.style-list a {
+    color: var(--ion-color-primary);
+    line-height: 1.5em;
+    text-decoration: none;
 }

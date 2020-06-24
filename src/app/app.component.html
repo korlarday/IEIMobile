@@ -10,62 +10,66 @@
     
     <ion-content class="my-container">
       <div>
-        <div style="max-width: 50%;margin:-50px auto">
-          <img src="assets/img/appicon.png" alt="logo" width="100%">
+        <div style="margin:10px">
+          <img src="assets/img/iei.png" alt="logo" style="height: 70px;display: block;margin:auto">
+        </div>
+        <div *ngIf="isAuthenticated" class="user-text">
+          <div>NAME: {{ clientName }}</div>
+          <div>RSA PIN: {{ rsaPin }}</div>
         </div>
       </div>
       <ion-list>
         <ion-menu-toggle *ngIf="isAuthenticated">
-          <ion-item lines="none" routerLink="/account-summary">
+          <ion-item lines="none" routerLink="/account" routerLinkActive="active-link">
             <ion-icon name="wallet-sharp" slot="start"></ion-icon>
             <ion-label>My Account</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle *ngIf="isAuthenticated">
-          <ion-item lines="none" routerLink="/profile">
+          <ion-item lines="none" routerLink="/profile" routerLinkActive="active-link">
             <ion-icon name="person-sharp" slot="start"></ion-icon>
             <ion-label>Profile</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle>
-          <ion-item class="transp" lines="none" routerLink="/news">
+          <ion-item class="transp" lines="none" routerLink="/news" routerLinkActive="active-link">
             <ion-icon name="book" slot="start"></ion-icon>
             <ion-label>News</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle>
-          <ion-item lines="none" routerLink="/branches">
+          <ion-item lines="none" routerLink="/branches" routerLinkActive="active-link">
             <ion-icon name="business-sharp" slot="start"></ion-icon>
             <ion-label>Branches</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle>
-          <ion-item lines="none" routerLink="/downloads">
+          <ion-item lines="none" routerLink="/downloads" routerLinkActive="active-link">
             <ion-icon name="cloud-download-sharp" slot="start"></ion-icon>
             <ion-label>Downloads</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle>
-          <ion-item lines="none" routerLink="/faqs">
+          <ion-item lines="none" routerLink="/faqs" routerLinkActive="active-link">
             <ion-icon name="clipboard-sharp" slot="start"></ion-icon>
             <ion-label>FAQs</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle *ngIf="!isAuthenticated">
-          <ion-item lines="none" routerLink="/login">
+          <ion-item lines="none" routerLink="/login" routerLinkActive="active-link">
             <ion-icon name="exit" slot="start"></ion-icon>
             <ion-label>Login</ion-label>
           </ion-item>
         </ion-menu-toggle>
         
         <ion-menu-toggle *ngIf="!isAuthenticated">
-          <ion-item lines="none" routerLink="/register">
+          <ion-item lines="none" routerLink="/register" routerLinkActive="active-link">
             <ion-icon name="document-text-sharp" slot="start"></ion-icon>
             <ion-label>Register With Us</ion-label>
           </ion-item>
@@ -73,7 +77,7 @@
 
 
         <ion-menu-toggle *ngIf="isAuthenticated">
-          <ion-item lines="none" routerLink="/feedback">
+          <ion-item lines="none" routerLink="/feedback" routerLinkActive="active-link">
             <ion-icon name="chatbubble-ellipses-sharp" slot="start"></ion-icon>
             <ion-label>Feedback</ion-label>
           </ion-item>
